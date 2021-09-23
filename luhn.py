@@ -30,8 +30,6 @@ class LuhnFormula():
             else:
                 total_chiffre += int(value)
 
-        #print("total", total_chiffre)
-
         print(total_chiffre, total_chiffre%10)
 
         if total_chiffre % 10:
