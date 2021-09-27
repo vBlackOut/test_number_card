@@ -13,6 +13,29 @@ class LuhnFormula():
         """
         Check if the input string is valid
         """
+        total_chiffre = 0
+
+        for i, value in enumerate(self.input[::-1]):
+
+            if i % 2 == True:
+                if int(value)*2 >= 10:
+                    somme_chiffre = 0
+                    for i in str(int(value)*2):
+                        somme_chiffre += int(i)
+                    total_chiffre += somme_chiffre
+                else:
+                    total_chiffre += int(value)*2
+
+            else:
+                total_chiffre += int(value)
+
+        if total_chiffre % 10:
+            return False
+        else:
+            return True
+
+
+    def is_bonus_valid(self) -> bool:
 
         total_chiffre = 0
 
@@ -30,11 +53,26 @@ class LuhnFormula():
             else:
                 total_chiffre += int(value)
 
-        print(total_chiffre, total_chiffre%10)
+        if total_chiffre%10 != 0:
 
-        if total_chiffre % 10:
+            # calculate the best number for the last number missing
+            self.input = self.input + str((total_chiffre%10)+1)
+
+            for i, value in enumerate(self.input[::-1]):
+
+                if i % 2 == True:
+                    if int(value)*2 >= 10:
+                        somme_chiffre = 0
+                        for i in str(int(value)*2):
+                            somme_chiffre += int(i)
+                        total_chiffre += somme_chiffre
+                    else:
+                        total_chiffre += int(value)*2
+
+                else:
+                    total_chiffre += int(value)
+
+        if total_chiffre % 10 == 1:
             return False
         else:
             return True
-
-        #return True
