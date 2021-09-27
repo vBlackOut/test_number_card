@@ -54,7 +54,8 @@ class LuhnFormula():
                 total_chiffre += int(value)
 
         if total_chiffre%10 != 0:
-
+            
+            print("old checking is {} retry checking: {}".format(self.input, self.input + str((total_chiffre%10)+1)))
             # calculate the best number for the last number missing
             self.input = self.input + str((total_chiffre%10)+1)
 
