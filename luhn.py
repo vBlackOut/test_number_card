@@ -29,7 +29,7 @@ class LuhnFormula():
             else:
                 total_chiffre += int(value)
 
-        if total_chiffre % 10:
+        if (total_chiffre % 10):
             return False
         else:
             return True
@@ -72,7 +72,8 @@ class LuhnFormula():
                 else:
                     total_chiffre += int(value)
 
-        if total_chiffre % 10 == 1:
+        # best check if number divise by ten
+        if (total_chiffre % 10) % 2:
             return False
         else:
             return True
